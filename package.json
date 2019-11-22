@@ -1,0 +1,30 @@
+{
+  "name": "b36-backend",
+  "version": "1.0.0",
+  "description": "Proyecto bach-36",
+  "main": "index.js",
+  "dependencies": {
+    "graphql-yoga": "^1.18.3",
+    "nodemon": "^2.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miguelmarba/b36-backend.git"
+  },
+  "keywords": [
+    "crm",
+    "batch",
+    "graphql"
+  ],
+  "author": "Mike",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miguelmarba/b36-backend/issues"
+  },
+  "homepage": "https://github.com/miguelmarba/b36-backend#readme"
+}
