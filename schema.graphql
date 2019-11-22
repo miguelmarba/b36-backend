@@ -1,0 +1,30 @@
+type Query{
+    getAuthors:[Author]!
+}
+
+type Author{
+    _id:ID!
+    first_name:String!
+    last_name:String!
+    email:String!
+    birth_date:String!
+    posts:[Post]!
+    gender:GENDERS
+    profile_pic:String!
+}
+
+type Post{
+    _id:ID!
+    title:String!
+    content:String!
+    author:Author!
+    cover:String!
+    liked_by:[Author]
+    is_active:Boolean
+}
+
+enum GENDERS{
+    M
+    F
+    O
+}

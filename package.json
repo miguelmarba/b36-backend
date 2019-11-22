@@ -1,0 +1,33 @@
+{
+  "name": "b36-backend",
+  "version": "1.0.0",
+  "description": "Configuracion server",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "graphql-yoga": "^1.18.3",
+    "mongoose": "^5.7.12"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.0"
+  },
+  "scripts": {
+    "test": "Ok",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miguelmarba/b36-backend.git"
+  },
+  "keywords": [
+    "batch",
+    "repo",
+    "b36"
+  ],
+  "author": "Mike Marba",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miguelmarba/b36-backend/issues"
+  },
+  "homepage": "https://github.com/miguelmarba/b36-backend#readme"
+}
