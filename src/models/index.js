@@ -1,5 +1,5 @@
-const Authors = require('./Autor');
-const Authors = require('./Posts');
+const Authors = require('./Author');
+const Posts = require('./Posts');
 
 module.exports = {
     Authors,

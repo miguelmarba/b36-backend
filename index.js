@@ -21,4 +21,8 @@ const typeDefs = importSchema(__dirname + '/schema.graphql');
 
 const server  = new GraphQLServer({typeDefs, resolvers});
 
+// Para definir un puerto, cuando el puerto 4000 esté ocupado
+// const port = process.env.PORT || 4001;
+// server.start(({ port }) => console.log('It works!'));
+
 server.start(() => console.log('It works!'));
