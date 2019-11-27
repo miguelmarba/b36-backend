@@ -1,19 +1,23 @@
+scalar EmailAddress
+scalar URL
+scalar Upload
+directive @auth on FIEL_DEFINITION | FIELD
 type Query{
     getAuthors:[Author]!
     gerSingle(id:ID):Author!
 }
 
 type Mutation{
-    createNewAuthor(data:AuthorInput!):Author!
-    updateOneAuthor(id:ID, data:AuthorInputUpdate):Author!
-    deleteOneAuthor(id:ID):String!
+    createNewAuthor(data:AuthorInput!):Author!@auth
+    updateOneAuthor(id:ID, data:AuthorInputUpdate):Author!@auth
+    deleteOneAuthor(id:ID):String!@auth
 }
 
 type Author{
     _id:ID!
     first_name:String!
     last_name:String!
-    email:String!
+    email:EmailAddress!
     birth_date:String!
     posts:[Post]!
     gender:GENDERS
@@ -23,7 +27,8 @@ type Author{
 input AuthorInput{
     first_name:String!
     last_name:String!
-    email:String!
+    email:EmailAddress!
+    password:String!
     birth_date:String
     gender:GENDERS
     profile_pic:String
@@ -32,7 +37,7 @@ input AuthorInput{
 input AuthorInputUpdate{
     first_name:String!
     last_name:String!
-    email:String!
+    email:EmailAddress!
     birth_date:String
     gender:GENDERS
     profile_pic:String

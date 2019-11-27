@@ -2,7 +2,9 @@ require('dotenv').config();
 
 const { GraphQLServer } = require('graphql-yoga');
 const { importSchema } = require('graphql-import');
+const { makeExecutableSchema } = require('graphql-tools');
 const resolvers = require('./src/resolvers');
+const AuthDirective = requiere('./src/')
 
 const mongoose = require('mongoose');
 
@@ -18,6 +20,13 @@ mongo.on('error', (error) => console.log(error))
     .once('open', () => console.log('Connected to database'));
 
 const typeDefs = importSchema(__dirname + '/schema.graphql');
+const schema = makeExecutableSchema({
+    typeDefs,
+    resolvers,
+    schemaDirectives: {
+        AuthDirective,
+    }
+});
 
 const server  = new GraphQLServer({typeDefs, resolvers});
 

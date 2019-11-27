@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('');
 
 const Schema = mongoose.Schema;
 
@@ -38,4 +39,17 @@ const AuhorSchema = new Schema({
     timestamps: true,
 });
 
+AuhorSchema.pre('save', function(next){
+    const author = this;
+    const SALT_FACTOR = 10; // Número de veces que se va encriptar
+    if(!author.isModified('password')) { return next(); }
+    bcrypt.getSalt(SALT_FACTOR, function(err, salt){ 
+        if(err) return next(err);
+        bcrypt.hash(author.password, salt, function(error, salt){
+            if(error) return next(error);
+            author.password = hash;
+            next();
+        });
+    });
+});
 module.exports = mongoose.model('author', AuhorSchema);
