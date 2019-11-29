@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "bcrypt": "^3.0.7",
+    "cloudinary": "^1.17.0",
     "dotenv": "^8.2.0",
     "graphql-scalars": "^1.0.4",
     "graphql-yoga": "^1.18.3",

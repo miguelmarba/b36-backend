@@ -4,7 +4,8 @@ const { GraphQLServer } = require('graphql-yoga');
 const { importSchema } = require('graphql-import');
 const { makeExecutableSchema } = require('graphql-tools');
 const resolvers = require('./src/resolvers');
-const AuthDirective = requiere('./src/')
+const AuthDirective = requiere('./src/resolvers/Directives/AuthDirectives');
+const verifyToken = require('./src/utils/verifyToken');
 
 const mongoose = require('mongoose');
 
@@ -20,6 +21,7 @@ mongo.on('error', (error) => console.log(error))
     .once('open', () => console.log('Connected to database'));
 
 const typeDefs = importSchema(__dirname + '/schema.graphql');
+
 const schema = makeExecutableSchema({
     typeDefs,
     resolvers,
@@ -28,10 +30,18 @@ const schema = makeExecutableSchema({
     }
 });
 
-const server  = new GraphQLServer({typeDefs, resolvers});
+const server  = new GraphQLServer({
+    schema, 
+    context: async (contextParams) => ({
+        ...contextParams,
+        user: contextParams.request ? await verifyToken(contextParams.request): {},
+    }),
+});
+
+// root, context, params, info
 
 // Para definir un puerto, cuando el puerto 4000 esté ocupado
 // const port = process.env.PORT || 4001;
-// server.start(({ port }) => console.log('It works!'));
+// server.start(({ port }) => console.log(`It works! in port ${port}`));
 
 server.start(() => console.log('It works!'));

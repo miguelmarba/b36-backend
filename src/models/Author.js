@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const bcrypt = require('');
+const bcrypt = require('bcrypt');
 
 const Schema = mongoose.Schema;
 
@@ -45,7 +45,7 @@ AuhorSchema.pre('save', function(next){
     if(!author.isModified('password')) { return next(); }
     bcrypt.getSalt(SALT_FACTOR, function(err, salt){ 
         if(err) return next(err);
-        bcrypt.hash(author.password, salt, function(error, salt){
+        bcrypt.hash(author.password, salt, function(error, hash){
             if(error) return next(error);
             author.password = hash;
             next();

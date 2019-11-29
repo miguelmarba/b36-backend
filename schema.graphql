@@ -4,13 +4,25 @@ scalar Upload
 directive @auth on FIEL_DEFINITION | FIELD
 type Query{
     getAuthors:[Author]!
-    gerSingle(id:ID):Author!
+    getSingleAuthor(id:ID):Author!
+    getSinglePost(id:ID):Post!
+    getPosts:[Post]!
+    me:Author!@auth
 }
 
 type Mutation{
     createNewAuthor(data:AuthorInput!):Author!@auth
-    updateOneAuthor(id:ID, data:AuthorInputUpdate):Author!@auth
-    deleteOneAuthor(id:ID):String!@auth
+    updateOneAuthor(id:ID!, data:AuthorInputUpdate!):Author!@auth
+    deleteOneAuthor(id:ID!):String!@auth
+    createNewPost(data:PostInput!):Post!@auth
+    updateOnePost(id:ID!, data:PostInpUpdtae):Post!@auth
+    deleteOnePost(id:ID!):String!@auth
+    login(email:EmailAddress!, password:String!):@auth
+}
+
+type Auth{
+    token:String!
+    message:String!
 }
 
 type Author{
@@ -35,9 +47,9 @@ input AuthorInput{
 }
 
 input AuthorInputUpdate{
-    first_name:String!
-    last_name:String!
-    email:EmailAddress!
+    first_name:String
+    last_name:String
+    email:EmailAddress
     birth_date:String
     gender:GENDERS
     profile_pic:String
@@ -50,7 +62,22 @@ type Post{
     content:String!
     author:Author!
     cover:String!
-    liked_by:[Author]
+    is_active:Boolean
+}
+
+type PostInput{
+    title:String!
+    content:String!
+    author:ID
+    cover:String
+    is_active:Boolean
+}
+
+type PostInputUpdate{
+    title:String
+    content:String
+    cover:String
+    liked_by:String
     is_active:Boolean
 }
 

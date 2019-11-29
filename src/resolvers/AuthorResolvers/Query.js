@@ -1,4 +1,4 @@
-const { getAllAuthors } = require('../../services/AuthorService');
+const { getAllAuthors, getOneAuthor } = require('../../services/AuthorService');
 
 const getAuthors = async () => {
     const authors = await getAllAuthors();
@@ -16,4 +16,5 @@ const getSingleAuthor = async (_, {id}) => {
 
 module.exports = {
     getAllAuthors,
+    getSingleAuthor,
 }

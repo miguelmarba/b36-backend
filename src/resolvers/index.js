@@ -1,9 +1,10 @@
 const AuthorResolver = require('./AuthorResolvers');
 const PostResolver = require('./PostResolvers');
-const { EmailAddresResolver} = require('graphql-scalars');
+const { EmailAddresResolver, URLResolver} = require('graphql-scalars');
 
 module.exports = {
-    EmailAddres: EmailAddresResolver
+    EmailAddres: EmailAddresResolver,
+    URL: URLResolver,
     Query:{
         ...AuthorResolver.Query,
         ...PostResolver.Query,

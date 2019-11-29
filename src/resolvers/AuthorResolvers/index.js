@@ -1,7 +1,7 @@
-const AuthorResolver = require('./AuthorResolvers')
+const Query = require('./Query');
+const Mutation = require('./Mutation');
 
 module.exports = {
-    Query:{
-        ...AuthorResolver.Query
-    }
-}
+    Query,
+    Mutation
+};
