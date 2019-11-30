@@ -1,0 +1,15 @@
+const { SchemaDirectiveVisitor } = require('graphql-tools');
+
+class AuthDirective extends SchemaDirectiveVisitor {
+    visitFieldDefinition ( field ){
+        const { resolve = defaultFieldResolver } = field;
+        field.resolve = async function( ...args ){
+            const [,,context] = args; // root, params, context, info
+            if(context.user){
+                return await resolve.apply(this, args);
+            } else {
+                throw new Error ('You must be authenticate.');
+            }
+        }
+    }
+}

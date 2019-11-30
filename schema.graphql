@@ -1,0 +1,88 @@
+scalar EmailAddress
+scalar URL
+scalar Upload
+directive @auth on FIEL_DEFINITION | FIELD
+type Query{
+    getAuthors:[Author]!
+    getSingleAuthor(id:ID):Author!
+    getSinglePost(id:ID):Post!
+    getPosts:[Post]!
+    me:Author!@auth
+}
+
+type Mutation{
+    createNewAuthor(data:AuthorInput!):Author!@auth
+    updateOneAuthor(id:ID!, data:AuthorInputUpdate!):Author!@auth
+    deleteOneAuthor(id:ID!):String!@auth
+    createNewPost(data:PostInput!):Post!@auth
+    updateOnePost(id:ID!, data:PostInpUpdtae):Post!@auth
+    deleteOnePost(id:ID!):String!@auth
+    login(email:EmailAddress!, password:String!):@auth
+}
+
+type Auth{
+    token:String!
+    message:String!
+}
+
+type Author{
+    _id:ID!
+    first_name:String!
+    last_name:String!
+    email:EmailAddress!
+    birth_date:String!
+    posts:[Post]!
+    gender:GENDERS
+    profile_pic:String!
+}
+
+input AuthorInput{
+    first_name:String!
+    last_name:String!
+    email:EmailAddress!
+    password:String!
+    birth_date:String
+    gender:GENDERS
+    profile_pic:String
+}
+
+input AuthorInputUpdate{
+    first_name:String
+    last_name:String
+    email:EmailAddress
+    birth_date:String
+    gender:GENDERS
+    profile_pic:String
+    is_active:Boolean
+}
+
+type Post{
+    _id:ID!
+    title:String!
+    content:String!
+    author:Author!
+    cover:String!
+    is_active:Boolean
+}
+
+type PostInput{
+    title:String!
+    content:String!
+    author:ID
+    cover:String
+    is_active:Boolean
+}
+
+type PostInputUpdate{
+    title:String
+    content:String
+    cover:String
+    liked_by:String
+    is_active:Boolean
+}
+
+enum GENDERS{
+    M
+    F
+    O
+}
