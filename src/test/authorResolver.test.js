@@ -24,7 +24,7 @@ const setupTest = require('./helpers');
 const MUTATION_AUTHOR = `
     mutation addAuthor($data: AuthorInput!){
         id,
-        emai,
+        email,
     }
 `;
 
