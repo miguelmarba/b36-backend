@@ -1,7 +1,8 @@
 scalar EmailAddress
 scalar URL
 scalar Upload
-directive @auth on FIEL_DEFINITION | FIELD
+directive @auth on FIELD_DEFINITION | FIELD
+
 type Query{
     getAuthors:[Author]!
     getSingleAuthor(id:ID):Author!
@@ -15,9 +16,9 @@ type Mutation{
     updateOneAuthor(id:ID!, data:AuthorInputUpdate!):Author!@auth
     deleteOneAuthor(id:ID!):String!@auth
     createNewPost(data:PostInput!):Post!@auth
-    updateOnePost(id:ID!, data:PostInpUpdtae):Post!@auth
+    updateOnePost(id:ID!, data:PostInputUpdate):Post!@auth
     deleteOnePost(id:ID!):String!@auth
-    login(email:EmailAddress!, password:String!):@auth
+    login(email:EmailAddress!, password:String!):Auth!
 }
 
 type Auth{

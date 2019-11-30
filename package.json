@@ -18,7 +18,8 @@
   },
   "scripts": {
     "test": "set NODE_ENV=test && jest",
-    "dev": "nodemon index.js -f *graphql"
+    "dev": "nodemon index.js -f *graphql",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",

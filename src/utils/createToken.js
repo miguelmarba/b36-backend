@@ -1,4 +1,4 @@
-const jwt = requere('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 
 const createToken = ({ email, first_name}) => {
     const payload = {
