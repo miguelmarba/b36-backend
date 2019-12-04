@@ -1,6 +1,6 @@
 const { Authors } = require('../models');
 
-const createAuthor = (data) => Authors.create( data )
+const createAuthor = (data) => Authors.create( data );
 const getAllAuthors = () => Authors.find({
     is_active:true
 }).populate({
@@ -30,6 +30,9 @@ const updateAuthor = (id) => Authors.findByIdAndUpdate({
 const getAuthorByEmail = (email) => Authors.findOne({email, is_active});
 
 module.exports = {
+    createAuthor,
     getAllAuthors,
     getOneAuthor,
+    deleteOneAuthor,
+    updateAuthor
 };
