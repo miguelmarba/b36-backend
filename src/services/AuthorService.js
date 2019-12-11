@@ -13,13 +13,13 @@ const getOneAuthor = (id) => Authors.findById({
     path: 'posts',
     model: 'posts'
 });
-const deleteOneAuthor = (id) => Authors.findByIdAndUpdate({
+const deleteAuthor = (id) => Authors.findByIdAndUpdate({
      _id:id, 
      is_active:true
     }, {
         is_active: false
 });
-const updateAuthor = (id) => Authors.findByIdAndUpdate({
+const updateAuthor = (id, data) => Authors.findByIdAndUpdate({
     _id:id,
     is_active:true,
 }, {
@@ -33,6 +33,6 @@ module.exports = {
     createAuthor,
     getAllAuthors,
     getOneAuthor,
-    deleteOneAuthor,
+    deleteAuthor,
     updateAuthor
 };

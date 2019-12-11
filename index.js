@@ -44,7 +44,9 @@ const server  = new GraphQLServer({
 // root, context, params, info
 
 // Para definir un puerto, cuando el puerto 4000 esté ocupado
-// const port = process.env.PORT || 4001;
-// server.start(({ port }) => console.log(`It works! in port ${port}`));
+const port = process.env.PORT || 4000;
+server.start(({ port }) => console.log(`It works! in port ${port}`));
 
-server.start(() => console.log('It works!'));
+//server.start(() => console.log('It works!'));
+
+module.exports = {schema};

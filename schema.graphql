@@ -8,6 +8,10 @@ type Query{
     getSingleAuthor(id:ID):Author!
     getSinglePost(id:ID):Post!
     getPosts:[Post]!
+    getContacts:[Contact]!
+    getSingleContact(id:ID):Contact!
+    getTasks:[Task]!
+    getSingleTask(id:ID):Task!
     me:Author!@auth
 }
 
@@ -18,6 +22,12 @@ type Mutation{
     createNewPost(data:PostInput!):Post!@auth
     updateOnePost(id:ID!, data:PostInputUpdate):Post!@auth
     deleteOnePost(id:ID!):String!@auth
+    createNewContact(data:ContactInput!):Contact!@auth
+    updateOneContact(id:ID!, data:ContactInputUpdate):Contact!@auth
+    deleteOneContact(id:ID!):String!@auth
+    createNewTask(data:TaskInput!):Task!@auth
+    updateOneTask(id:ID!, data:TaskInputUpdate):Task!@auth
+    deleteOneTask(id:ID!):String!@auth
     login(email:EmailAddress!, password:String!):Auth!
 }
 
@@ -86,4 +96,103 @@ enum GENDERS{
     M
     F
     O
+}
+
+type Contact{
+    _id:ID!
+    first_name:String!
+    last_name:String!
+    acount_name:String!
+    tittle:String!
+    email:EmailAddress!
+    phone:String!
+    mobile:String!
+    birth_date:String!
+    country:String!
+    city:String!
+    address:String!
+    profile_pic:String!
+    tasks:[Task]!
+    is_active:Boolean
+}
+
+input ContactInput{
+    first_name:String!
+    last_name:String!
+    acount_name:String
+    tittle:String
+    email:EmailAddress
+    phone:String
+    mobile:String
+    birth_date:String
+    country:String
+    city:String
+    address:String
+    profile_pic:String
+    is_active:Boolean
+}
+
+input ContactInputUpdate{
+    first_name:String
+    last_name:String
+    acount_name:String
+    tittle:String
+    email:EmailAddress
+    phone:String
+    mobile:String
+    birth_date:String
+    country:String
+    city:String
+    address:String
+    profile_pic:String
+    is_active:Boolean
+}
+
+type Task{
+    _id:ID!
+    subject:String!
+    comments:String!
+    due_date:String!
+    priority:PRIORITIES!
+    status:STATUSES!
+    send_notif_email:Boolean!
+    reminder:String!
+    contact:Contact!
+    document:String!
+    is_active:Boolean
+}
+
+input TaskInput{
+    subject:String!
+    comments:String!
+    due_date:String!
+    priority:PRIORITIES
+    status:STATUSES
+    send_notif_email:Boolean
+    reminder:String
+    contact:ID
+    document:String
+    is_active:Boolean
+}
+
+input TaskInputUpdate{
+    subject:String
+    comments:String
+    due_date:String
+    priority:PRIORITIES
+    status:STATUSES
+    send_notif_email:Boolean
+    reminder:String
+    document:String
+    is_active:Boolean
+}
+
+enum PRIORITIES{
+    HIGH
+    NORMAL
+}
+
+enum STATUSES{
+    HIGH
+    NORMAL
 }
