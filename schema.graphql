@@ -80,7 +80,7 @@ input PostInput{
     title:String!
     content:String!
     author:ID
-    cover:String
+    cover:Upload
     is_active:Boolean
 }
 
