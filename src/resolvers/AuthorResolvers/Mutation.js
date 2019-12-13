@@ -18,7 +18,7 @@ const deleteOneAuthor = async (_, { id }) => {
     return 'Author has been deleted';
 };
 
-const login = async (_, params, ) => {
+const login = async (_, params) => {
     const token = await authenticate(params).catch(e => {throw e;});
     return {
         token: token,

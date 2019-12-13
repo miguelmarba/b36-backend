@@ -27,12 +27,13 @@ const updateAuthor = (id, data) => Authors.findByIdAndUpdate({
 }, {
     new: true // Get updated row
 });
-const getAuthorByEmail = (email) => Authors.findOne({email, is_active});
+const getAuthorByEmail = (email) => Authors.findOne({email, is_active:true}).populate('posts');
 
 module.exports = {
     createAuthor,
     getAllAuthors,
     getOneAuthor,
     deleteAuthor,
-    updateAuthor
+    updateAuthor,
+    getAuthorByEmail
 };

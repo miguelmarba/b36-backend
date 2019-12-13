@@ -15,4 +15,4 @@ const authenticate = ({ email, password }) => {
     });
 };
 
-module.exports.authenticate;
+module.exports = authenticate;

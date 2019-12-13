@@ -44,7 +44,7 @@ type Author{
     birth_date:String!
     posts:[Post]!
     gender:GENDERS
-    profile_pic:String!
+    profile_pic:URL!
 }
 
 input AuthorInput{
@@ -54,7 +54,7 @@ input AuthorInput{
     password:String!
     birth_date:String
     gender:GENDERS
-    profile_pic:String
+    profile_pic:URL
 }
 
 input AuthorInputUpdate{
@@ -63,7 +63,7 @@ input AuthorInputUpdate{
     email:EmailAddress
     birth_date:String
     gender:GENDERS
-    profile_pic:String
+    profile_pic:URL
     is_active:Boolean
 }
 
@@ -111,7 +111,7 @@ type Contact{
     country:String!
     city:String!
     address:String!
-    profile_pic:String!
+    profile_pic:URL!
     tasks:[Task]!
     is_active:Boolean
 }
@@ -128,7 +128,7 @@ input ContactInput{
     country:String
     city:String
     address:String
-    profile_pic:String
+    profile_pic:URL
     is_active:Boolean
 }
 
@@ -144,7 +144,7 @@ input ContactInputUpdate{
     country:String
     city:String
     address:String
-    profile_pic:String
+    profile_pic:URL
     is_active:Boolean
 }
 
@@ -157,8 +157,8 @@ type Task{
     status:STATUSES!
     send_notif_email:Boolean!
     reminder:String!
-    contact:Contact!
-    document:String!
+    contact:ID!
+    document:URL!
     is_active:Boolean
 }
 
@@ -171,7 +171,7 @@ input TaskInput{
     send_notif_email:Boolean
     reminder:String
     contact:ID
-    document:String
+    document:URL
     is_active:Boolean
 }
 
@@ -183,7 +183,7 @@ input TaskInputUpdate{
     status:STATUSES
     send_notif_email:Boolean
     reminder:String
-    document:String
+    document:URL
     is_active:Boolean
 }
 

@@ -24,7 +24,7 @@ const TaskSchema = new Schema({
     },
     contact: {
         type: Schema.Types.ObjectId,
-        ref: 'contact'
+        ref: 'contacts'
     },
     document:{
         type: String

@@ -11,7 +11,7 @@ class AuthDirective extends SchemaDirectiveVisitor {
             } else {
                 throw new Error ('You must be authenticate.');
             }
-        }
+        };
     }
 }
 

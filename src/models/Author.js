@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 const Schema = mongoose.Schema;
 
-const AuhorSchema = new Schema({
+const AuthorSchema = new Schema({
     first_name: {
         type: String,
         required: true
@@ -39,7 +39,7 @@ const AuhorSchema = new Schema({
     timestamps: true,
 });
 
-AuhorSchema.pre('save', function(next){
+AuthorSchema.pre('save', function(next){
     const author = this;
     const SALT_FACTOR = 10; // Número de veces que se va encriptar
     if(!author.isModified('password')) { return next(); }
@@ -52,4 +52,4 @@ AuhorSchema.pre('save', function(next){
         });
     });
 });
-module.exports = mongoose.model('author', AuhorSchema);
+module.exports = mongoose.model('author', AuthorSchema);

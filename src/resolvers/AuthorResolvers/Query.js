@@ -22,5 +22,5 @@ const me = async (_, __, {user}) => {
 module.exports = {
     getAuthors,
     getSingleAuthor,
-    me
+    me,
 }
