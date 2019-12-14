@@ -14,7 +14,7 @@ type Query{
     getSingleContact(id:ID):Contact!
     getTasks:[Task]!
     getSingleTask(id:ID):Task!
-    me:Author!@auth
+    me:Employee!@auth
 }
 
 type Mutation{

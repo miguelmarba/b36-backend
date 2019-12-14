@@ -18,6 +18,7 @@ const deleteOneAuthor = async (_, { id }) => {
     return 'Author has been deleted';
 };
 
+/*
 const login = async (_, params) => {
     const token = await authenticate(params).catch(e => {throw e;});
     return {
@@ -25,10 +26,11 @@ const login = async (_, params) => {
         message: 'Login Successful'
     };
 };
+*/
 
 module.exports = {
     createNewAuthor,
     updateOneAuthor,
     deleteOneAuthor,
-    login
+    //login,
 }
