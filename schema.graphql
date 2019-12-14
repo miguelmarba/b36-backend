@@ -4,6 +4,8 @@ scalar Upload
 directive @auth on FIELD_DEFINITION | FIELD
 
 type Query{
+    getEmployees:[Employee]!
+    getSingleEmployee:[Employee]!
     getAuthors:[Author]!
     getSingleAuthor(id:ID):Author!
     getSinglePost(id:ID):Post!
@@ -16,6 +18,9 @@ type Query{
 }
 
 type Mutation{
+    createNewEmployee(data:EmployeeInput!):Employee!@auth
+    updateOneEmployee(id:ID, data:EmployeeInputUpdate!):Employee!@auth
+    deleteOneEmployee(id:ID):String!@auth
     createNewAuthor(data:AuthorInput!):Author!@auth
     updateOneAuthor(id:ID!, data:AuthorInputUpdate!):Author!@auth
     deleteOneAuthor(id:ID!):String!@auth
@@ -67,6 +72,40 @@ input AuthorInputUpdate{
     is_active:Boolean
 }
 
+type Employee{
+    _id:ID!
+    first_name:String
+    last_name:String
+    email:EmailAddress
+    profile:PROFILES
+    birth_date:String
+    gender:GENDERS
+    profile_pic:URL
+    is_active:Boolean
+}
+
+input EmployeeInput{
+    first_name:String!
+    last_name:String!
+    email:EmailAddress!
+    password:String!
+    profile:PROFILES
+    birth_date:String
+    gender:GENDERS
+    profile_pic:URL
+}
+
+input EmployeeInputUpdate{
+    first_name:String
+    last_name:String
+    email:EmailAddress
+    profile:PROFILES
+    birth_date:String
+    gender:GENDERS
+    profile_pic:URL
+    is_active:Boolean
+}
+
 type Post{
     _id:ID!
     title:String!
@@ -103,7 +142,7 @@ type Contact{
     first_name:String!
     last_name:String!
     acount_name:String!
-    tittle:String!
+    title:String!
     email:EmailAddress!
     phone:String!
     mobile:String!
@@ -120,7 +159,7 @@ input ContactInput{
     first_name:String!
     last_name:String!
     acount_name:String
-    tittle:String
+    title:String
     email:EmailAddress
     phone:String
     mobile:String
@@ -136,7 +175,7 @@ input ContactInputUpdate{
     first_name:String
     last_name:String
     acount_name:String
-    tittle:String
+    title:String
     email:EmailAddress
     phone:String
     mobile:String
@@ -195,4 +234,12 @@ enum PRIORITIES{
 enum STATUSES{
     HIGH
     NORMAL
+}
+
+enum PROFILES{
+    SYSTEM_ADMIN
+    MARKETING
+    CONTRACT_MANAGER
+    SOLUTION_MANAGER
+    READ_ONLY
 }

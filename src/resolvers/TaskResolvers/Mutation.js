@@ -2,10 +2,12 @@ const { createTask, updateTask, deleteTask } = require('../../services/TaskServi
 
 const { getOneContact } = require('../../services/ContactService');
 
+const { getOneAuthor } = require ('../../services/ContactService');
+
 const storage = require('../../utils/storage');
 
-const createNewTask = async (_, {data}, {contact}) => {
-    data.contact = contact._id;
+const createNewTask = async (_, {data}, {user}) => {
+    //data.employe = user._id; // para guardar el usuario que crea el Task
     if(data.document){
         const { createReadStream } = await data.document;
         const stream = createReadStream();
@@ -17,6 +19,7 @@ const createNewTask = async (_, {data}, {contact}) => {
     }
 
     const task = await createTask(data);
+    const contact = await getOneContact(data.contact);
     contact.tasks.push(task);
     contact.save();
     return task;

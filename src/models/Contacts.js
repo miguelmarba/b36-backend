@@ -14,7 +14,7 @@ const ContactSchema = new Schema({
     acount_name: {
         type: String,
     },
-    tittle: {
+    title: {
         type: String,
     },
     email: {
