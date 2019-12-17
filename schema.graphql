@@ -141,7 +141,7 @@ type Contact{
     _id:ID!
     first_name:String!
     last_name:String!
-    acount_name:String!
+    account_name:String!
     title:String!
     email:EmailAddress!
     phone:String!
@@ -158,7 +158,7 @@ type Contact{
 input ContactInput{
     first_name:String!
     last_name:String!
-    acount_name:String
+    account_name:String
     title:String
     email:EmailAddress
     phone:String
@@ -174,7 +174,7 @@ input ContactInput{
 input ContactInputUpdate{
     first_name:String
     last_name:String
-    acount_name:String
+    account_name:String
     title:String
     email:EmailAddress
     phone:String

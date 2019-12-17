@@ -11,7 +11,7 @@ const ContactSchema = new Schema({
         type: String,
         required: true
     }, 
-    acount_name: {
+    account_name: {
         type: String,
     },
     title: {
