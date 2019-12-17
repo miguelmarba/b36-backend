@@ -12,7 +12,7 @@ const updateOneContact = async (_, {id, data}) => {
     if(!contact){
         throw new Error('Contact not exists');
     }
-    return contact;
+    return 'Contact deleted';;
 }
 
 const deleteOneContact = async (_, {id}) => {
